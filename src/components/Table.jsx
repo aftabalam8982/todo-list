@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({ data }) => {
+const Table = ({ data, handleEdit, handleDelete }) => {
   //   console.log(data);
   //   const { tableData } = data;
   //   const tableData = ["need to complete task", "get vegetables"];
@@ -24,19 +24,25 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody className='divide-y divide-gray-200 bg-white'>
-          {data.map((item) => (
+          {data.map((item, i) => (
             <tr key={item}>
               <td className='whitespace-nowrap px-12 py-4'>
                 <div className='text-xl text-gray-900 '>{item}</div>
               </td>
 
               <td className='whitespace-nowrap px-1 py-2 text-sm text-gray-700'>
-                <button className='text-gray-700 text-lg px-2 py-1 rounded-md active:bg-slate-200 active:translate-y-0.5'>
+                <button
+                  onClick={() => handleEdit(i)}
+                  className='text-gray-700 text-lg px-2 py-1 rounded-md active:bg-slate-200 active:translate-y-0.5'
+                >
                   Edit
                 </button>
               </td>
               <td className='whitespace-nowrap px-1 py-2 text-right text-sm font-medium'>
-                <button className='text-gray-700 text-lg px-2 py-1 rounded-md active:bg-slate-200 active:translate-y-0.5'>
+                <button
+                  onClick={() => handleDelete(i)}
+                  className='text-gray-700 text-lg px-2 py-1 rounded-md active:bg-red-200 active:translate-y-0.5'
+                >
                   Delete
                 </button>
               </td>
